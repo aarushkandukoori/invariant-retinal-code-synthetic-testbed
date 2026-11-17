@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Synthetic Testbed for Separating Stimulus-Invariant and Nuisance-Driven Structure in Retinal Population Codes</title>
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #131826; --ink: #e8ecf4; --muted: #9aa4b8;
+    --accent: #6ea8fe; --accent2: #9d7bfe; --line: #232b3d; --good: #4cc38a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 96px; }
+  header { padding: 88px 0 40px; text-align: center; }
+  h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.2;
+       background: linear-gradient(100deg, var(--accent), var(--accent2));
+       -webkit-background-clip: text; background-clip: text; color: transparent;
+       opacity: 0; transform: translateY(14px); animation: rise .7s .1s forwards; }
+  .oneliner { color: var(--muted); margin-top: 16px; font-size: 1.08rem;
+       opacity: 0; animation: rise .7s .35s forwards; }
+  .authors { margin-top: 22px; color: var(--muted); font-size: .95rem;
+       opacity: 0; animation: rise .7s .5s forwards; }
+  .authors b { color: var(--ink); font-weight: 600; }
+  .badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 22px;
+       opacity: 0; animation: rise .7s .65s forwards; }
+  .badge { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
+       font-size: .82rem; color: var(--muted); }
+  .badge.hot { border-color: var(--accent); color: var(--accent); }
+  .cta { display: inline-block; margin-top: 30px; padding: 11px 22px; border-radius: 10px;
+       background: linear-gradient(100deg, var(--accent), var(--accent2)); color: #0b0e14;
+       font-weight: 700; text-decoration: none; opacity: 0; animation: rise .7s .8s forwards; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  section { margin-top: 56px; opacity: 0; transform: translateY(18px); transition: .6s; }
+  section.in { opacity: 1; transform: none; }
+  h2 { font-size: 1.25rem; margin-bottom: 18px; }
+  h2::before { content: "§ "; color: var(--accent); }
+  .disclosure { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--good);
+       border-radius: 10px; padding: 16px 20px; color: var(--muted); font-size: .93rem; }
+  .abstract { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  .ideas { display: grid; gap: 14px; }
+  .idea { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px;
+       display: flex; gap: 14px; align-items: baseline; }
+  .idea .n { color: var(--accent); font-weight: 800; font-family: ui-monospace, monospace; }
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .step { background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+       padding: 14px 18px; cursor: pointer; transition: border-color .2s; }
+  .step:hover { border-color: var(--accent); }
+  .step .head { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+  .step .dot { width: 10px; height: 10px; border-radius: 50%; flex: none;
+       background: linear-gradient(100deg, var(--accent), var(--accent2)); }
+  .step .detail { max-height: 0; overflow: hidden; color: var(--muted); font-size: .93rem;
+       transition: max-height .35s ease, margin .35s ease; }
+  .step.open .detail { max-height: 200px; margin-top: 10px; }
+  .arrow { text-align: center; color: var(--line); font-size: 1.1rem; padding: 2px 0; }
+  footer { margin-top: 72px; text-align: center; color: var(--muted); font-size: .85rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>A Synthetic Testbed for Separating Stimulus-Invariant and Nuisance-Driven Structure in Retinal Population Codes</h1>
+    <p class="oneliner">An early-stage, synthetic-data testbed for asking which parts of a retinal population response carry scene identity regardless of nuisance variation.</p>
+    <p class="authors"><b>Aarush Kandukoori</b> · Carnegie Mellon University (Lead Student Author)<br>
+       <b>Aditya Kandukoori</b> · Poolesville High School (Co-Author)</p>
+    <div class="badges">
+      <span class="badge hot">Early-stage research proposal</span>
+      <span class="badge">Seeking expert feedback</span>
+      <span class="badge">Synthetic data only</span>
+    </div>
+    <a class="cta" href="https://github.com/aarushkandukoori/invariant-retinal-code-synthetic-testbed">View code &amp; synthetic benchmarks on GitHub →</a>
+  </header>
+
+  <section>
+    <div class="disclosure"><b style="color:var(--ink)">AI assistance disclosure.</b>
+      AI tools (Claude) were used for literature synthesis, ideation, and draft preparation
+      of this proposal, its code, and this page. An AI review checked the draft before release, and the authors take responsibility
+      for all content. No experimental results are claimed; all datasets in the repository
+      are synthetic and labeled as such.</div>
+  </section>
+
+  <section>
+    <h2>Abstract</h2>
+    <div class="abstract">Recent work on the retina reports that stimulus-invariant aspects of the population code help discriminate natural scenes. We outline an early-stage, feedback-seeking framework for testing how such invariant structure can be isolated and measured. We model a retinal ganglion cell population as a noisy, nonlinear encoder whose responses depend on scene identity and on nuisance variables such as luminance, contrast and gaze-like shifts. We then ask which linear read-out subspaces maximize scene discriminability while suppressing nuisance-driven variance. The central object is a generalized Rayleigh quotient that trades between-scene signal against noise and nuisance covariance, and it has a closed-form solution via a generalized eigenproblem. We plan to study it on clearly labeled synthetic populations with known ground truth, and to compare it against standard baselines such as PCA, Fisher discriminant analysis and a contrastive encoder. No experiments have been run and no results are reported. We are undergraduate and high school researchers and we seek expert feedback on whether the setup is biologically sensible and which real-data checks would be most informative. AI tools (Claude) were used for literature synthesis, ideation, and draft preparation, an AI review checked the draft before release, and the authors take responsibility for all content.</div>
+  </section>
+
+  <section>
+    <h2>Key ideas</h2>
+    <div class="ideas"><div class="idea"><span class="n">01</span><span>Model the population as scene-dependent signal plus nuisance-driven variance plus trial noise, with planted ground truth.</span></div><div class="idea"><span class="n">02</span><span>Find invariant read-outs as top generalized eigenvectors of (S_B, Sigma + lambda S_N), a checkable closed form.</span></div><div class="idea"><span class="n">03</span><span>Compare against PCA, Fisher discriminant, nuisance regression and a contrastive encoder, and ask experts which real-data checks matter.</span></div></div>
+  </section>
+
+  <section>
+    <h2>Proposed pipeline</h2>
+    <div class="flow"><div class="step"><div class="head"><span class="dot"></span>Simulate synthetic RGC population with scene and nuisance structure</div><div class="detail">Simulate synthetic RGC population with scene and nuisance structure</div></div><div class="arrow">↓</div><div class="step"><div class="head"><span class="dot"></span>Estimate S_B, S_N and noise covariance</div><div class="detail">Estimate S_B, S_N and noise covariance</div></div><div class="arrow">↓</div><div class="step"><div class="head"><span class="dot"></span>Solve the lambda-penalized generalized eigenproblem for read-outs</div><div class="detail">Solve the lambda-penalized generalized eigenproblem for read-outs</div></div><div class="arrow">↓</div><div class="step"><div class="head"><span class="dot"></span>Evaluate discriminability, nuisance leakage and subspace recovery against baselines</div><div class="detail">Evaluate discriminability, nuisance leakage and subspace recovery against baselines</div></div><div class="arrow">↓</div><div class="step"><div class="head"><span class="dot"></span>Collect expert feedback and refine</div><div class="detail">Collect expert feedback and refine</div></div></div>
+  </section>
+
+  <footer>
+    <p>Full proposal: <a href="https://github.com/aarushkandukoori/invariant-retinal-code-synthetic-testbed">GitHub repository</a> ·
+       Contact: <a href="mailto:akanduko@andrew.cmu.edu">akanduko@andrew.cmu.edu</a></p>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll(".step").forEach(s =>
+    s.addEventListener("click", () => s.classList.toggle("open")));
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll("section").forEach(s => io.observe(s));
+</script>
+</body>
+</html>
